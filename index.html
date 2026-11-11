@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7f2">
+  <meta name="description" content="A...MARTE: un espacio para conocerte, comunicar tus límites y construir acuerdos conscientes.">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <title>A...MARTE · Amar sin dañar</title>
+</head>
+<body>
+  <svg aria-hidden="true" class="svg-library" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3V10Z"/><path d="M9 20v-7h6v7"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.8a5.4 5.4 0 0 0-7.6 0L12 6l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 21l8.8-8.6a5.4 5.4 0 0 0 0-7.6Z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 7.9L22 12l-7.9 2.1L12 22l-2.1-7.9L2 12l7.9-2.1L12 2Z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c2.8-1.1 5.5-1 8 1v14c-2.5-2-5.2-2.1-8-1V5.5Zm16 0c-2.8-1.1-5.5-1-8 1v14c2.5-2 5.2-2.1 8-1V5.5Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13.5a5 5 0 0 0 7.4 0l2-2a5 5 0 0 0-7.1-7.1l-2 2M14 10.5a5 5 0 0 0-7.4 0l-2 2a5 5 0 0 0 7.1 7.1l2-2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5.5 5.5L20 7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v6m4-6v6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-log-out" viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4m6-4 4-4-4-4m4 4H9"/></symbol>
+  </svg>
+
+  <div id="loading-screen" class="loading-screen" role="status" aria-live="polite">
+    <span class="spinner"></span> Preparando un espacio para ti…
+  </div>
+
+  <main id="auth-screen" class="auth-layout" hidden>
+    <section class="auth-illustration" aria-labelledby="auth-hero-title">
+      <div class="brand brand-light">
+        <span class="brand-mark">a<span>...</span>marte<span class="brand-period">.</span></span>
+        <span class="brand-sub">AMAR SIN DAÑAR</span>
+      </div>
+      <div class="auth-art" aria-hidden="true">
+        <div class="art-ring ring-one"></div>
+        <div class="art-ring ring-two"></div>
+        <div class="art-heart">♡</div>
+        <span class="art-star star-one">✳</span>
+        <span class="art-star star-two">✳</span>
+      </div>
+      <div class="auth-quote">
+        <span class="overline">UN ESPACIO PARA VOLVER A TI</span>
+        <h1 id="auth-hero-title">Ámate a ti mismo<br>antes de amar<br><em>a los demás.</em></h1>
+        <p>Una relación consciente empieza por reconocer lo que sientes, necesitas y sueñas.</p>
+      </div>
+      <div class="auth-decoration">01 — TU HISTORIA IMPORTA</div>
+    </section>
+
+    <section class="auth-panel" aria-label="Acceso a A...MARTE">
+      <div class="auth-panel-inner">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> BIENVENIDO A TU ESPACIO</span>
+        <h2 id="auth-title">Volver a encontrarte empieza aquí.</h2>
+        <p class="muted auth-intro">Un lugar seguro para escucharte y construir vínculos con intención.</p>
+        <div id="connection-notice" class="notice info" role="status" hidden></div>
+        
+        <!-- BOTÓN DE GOOGLE -->
+        <div class="auth-form-container">
+          <button id="auth-google" type="button" class="button button-primary button-full" style="background-color: #fff; color: #333; border: 1px solid #ddd;">
+            <svg class="inline-icon" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.16v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.16C1.43 8.55 1 10.22 1 12s.43 3.45 1.16 4.93l3.68-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.16 7.07l3.68 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continuar con Google
+          </button>
+          <p id="auth-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <div class="auth-separator"><span>o descubre cómo funciona</span></div>
+        <button id="demo-start" class="button button-demo button-full" type="button">
+          <svg><use href="#i-spark"/></svg> Explorar demostración
+        </button>
+        <p class="micro disclaimer">La demostración se guarda solo en este navegador. No ingreses información confidencial: LocalStorage no ofrece protección para datos sensibles.</p>
+      </div>
+      <div class="auth-footer">CRECER CONTIGO, CRECER EN PAREJA <span>✦</span> A...MARTE</div>
+    </section>
+  </main>
+
+  <div id="dashboard" class="app-shell" hidden>
+    <div id="sidebar-scrim" class="sidebar-scrim" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Menú principal">
+      <div class="brand">
+        <span class="brand-mark">a<span>...</span>marte<span class="brand-period">.</span></span>
+        <span class="brand-sub">AMAR SIN DAÑAR</span>
+      </div>
+      <div class="sidebar-label">TU ESPACIO</div>
+      <nav class="side-nav" aria-label="Secciones">
+        <button type="button" class="nav-link active" data-go="inicio" aria-current="page">
+          <svg><use href="#i-home"/></svg><span>Inicio</span>
+        </button>
+        <button type="button" class="nav-link" data-go="privado">
+          <svg><use href="#i-lock"/></svg><span>Mi espacio privado</span><span class="nav-lock">●</span>
+        </button>
+        <button type="button" class="nav-link" data-go="limites">
+          <svg><use href="#i-heart"/></svg><span>Límites y metas</span>
+        </button>
+        <button type="button" class="nav-link" data-go="aprendizajes">
+          <svg><use href="#i-spark"/></svg><span>Aprendizajes</span>
+        </button>
+        <button type="button" class="nav-link" data-go="biblioteca">
+          <svg><use href="#i-book"/></svg><span>Biblioteca</span>
+        </button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="gentle-note">
+          <span>✳ UN RECORDATORIO</span>
+          <p>Amar no es dejar de ser tú. Es compartir lo que eres.</p>
+          <div class="note-squiggle">♡</div>
+        </div>
+        <button type="button" id="clear-demo" class="logout-button" hidden>
+          <svg><use href="#i-trash"/></svg> Borrar datos de demostración
+        </button>
+        <button type="button" id="logout-btn" class="logout-button">
+          <svg><use href="#i-log-out"/></svg> Salir de mi espacio
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content" id="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button type="button" id="mobile-menu" class="icon-button mobile-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidebar">
+            <svg><use href="#i-menu"/></svg>
+          </button>
+          <div class="breadcrumb">A...MARTE <span>/</span> <strong id="breadcrumb-current">Inicio</strong></div>
+        </div>
+        <div class="topbar-right">
+          <span id="data-mode" class="data-mode"></span>
+          <span id="user-avatar" class="avatar" aria-hidden="true">T</span>
+          <span id="topbar-name" class="topbar-name">Tu espacio</span>
+        </div>
+      </header>
+
+      <div class="view-container">
+        <!-- VISTA INICIO -->
+        <section class="view active" id="view-inicio" aria-labelledby="inicio-title">
+          <div class="welcome-line">
+            <span class="eyebrow">TU HOGAR EMOCIONAL <span class="tiny-star">✳</span></span>
+            <span id="today-label" class="date-label"></span>
+          </div>
+          <div class="welcome-grid">
+            <div class="welcome-copy">
+              <h1 id="inicio-title">Qué bonito es<br><em>construir</em> desde el amor.</h1>
+              <p>Este es tu espacio para escucharte, cuidar tus límites y hacer del amor una decisión consciente cada día.</p>
+              <button type="button" data-go="limites" class="inline-link">Empezar por mis acuerdos <svg><use href="#i-arrow"/></svg></button>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="hero-orbit orbit-a"></div>
+              <div class="hero-orbit orbit-b"></div>
+              <span class="hero-heart">♡</span>
+              <span class="hero-flower flower-a">✽</span>
+              <span class="hero-flower flower-b">✳</span>
+              <span class="hero-small">AMAR<br>ES<br>CUIDAR.</span>
+            </div>
+          </div>
+
+          <div class="section-title-row">
+            <div>
+              <span class="eyebrow">LO QUE ESTAMOS CONSTRUYENDO</span>
+              <h2>Nuestra conexión</h2>
+            </div>
+          </div>
+
+          <div class="connection-grid">
+            <article class="card connection-card">
+              <span class="card-icon peach"><svg><use href="#i-link"/></svg></span>
+              <div>
+                <div class="card-eyebrow">VÍNCULO DE PAREJA</div>
+                <h3 id="connection-title">Tu historia puede comenzar aquí</h3>
+                <p id="connection-description" class="muted">Conecta tu perfil con el de tu pareja cuando ambos estén listos.</p>
+              </div>
+              <div class="connection-actions" id="connection-actions">
+                <div class="code-area">
+                  <span class="mini-label">TU CÓDIGO DE VINCULACIÓN</span>
+                  <div class="code-line">
+                    <code id="my-pair-code">—</code>
+                    <button id="copy-code" type="button" class="copy-button" aria-label="Copiar mi código">Copiar</button>
+                  </div>
+                </div>
+                <form id="link-form" class="link-form">
+                  <label for="partner-code">Código de tu pareja</label>
+                  <div class="inline-form">
+                    <input type="text" id="partner-code" autocomplete="off" placeholder="AM-XXXX-..." required>
+                    <button type="submit" class="button button-small button-primary">Vincular</button>
+                  </div>
+                  <small id="link-help" class="muted">Ambas personas necesitan una cuenta propia.</small>
+                </form>
+              </div>
+            </article>
+
+            <article class="card time-card">
+              <div class="time-head">
+                <span class="card-icon lavender"><svg><use href="#i-clock"/></svg></span>
+                <span class="eyebrow">NUESTRO TIEMPO</span>
+              </div>
+              <div id="time-empty" class="time-empty">Cada historia empieza con una fecha. Agrega las suyas.</div>
+              <div class="time-stats">
+                <div>
+                  <strong id="days-met" class="big-number">—</strong>
+                  <span>DÍAS DESDE QUE NOS CONOCIMOS</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div>
+                  <strong id="days-anniversary" class="big-number">—</strong>
+                  <span>DÍAS DESDE NUESTRO ANIVERSARIO</span>
+                </div>
+              </div>
+              <form id="dates-form" class="dates-form">
+                <div class="form-field">
+                  <label for="date-met">Nos conocimos</label>
+                  <input type="date" id="date-met">
+                </div>
+                <div class="form-field">
+                  <label for="date-anniversary">Nuestro aniversario</label>
+                  <input type="date" id="date-anniversary">
+                </div>
+                <button type="submit" id="save-dates" class="button button-outline button-small">Guardar fechas</button>
+              </form>
+              <p id="date-feedback" class="field-error" hidden></p>
+            </article>
+          </div>
+
+          <div class="section-title-row explore-title">
+            <div>
+              <span class="eyebrow">UN PASO A LA VEZ</span>
+              <h2>Pequeños actos, grandes cambios</h2>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <button class="quick-card warm" type="button" data-go="privado">
+              <span class="quick-icon"><svg><use href="#i-lock"/></svg></span>
+              <span class="quick-text"><strong>Escúchate</strong><span>Escribe eso que hoy necesitas soltar, solo para ti.</span><em>Ir a mi diario →</em></span>
+            </button>
+            <button class="quick-card cool" type="button" data-go="limites">
+              <span class="quick-icon"><svg><use href="#i-heart"/></svg></span>
+              <span class="quick-text"><strong>Conversemos</strong><span>Los límites pueden ser una forma de cuidar el vínculo.</span><em>Ver nuestros acuerdos →</em></span>
+            </button>
+            <button class="quick-card golden" type="button" data-go="aprendizajes">
+              <span class="quick-icon"><svg><use href="#i-spark"/></svg></span>
+              <span class="quick-text"><strong>Aprendamos</strong><span>Transformemos una conversación difícil en aprendizaje.</span><em>Ver aprendizajes →</em></span>
+            </button>
+          </div>
+        </section>
+
+        <!-- VISTA PRIVADO -->
+        <section class="view" id="view-privado" aria-labelledby="privado-title" hidden>
+          <div class="page-hero private-banner">
+            <div>
+              <span class="eyebrow">SOLO PARA TI · <svg class="inline-icon"><use href="#i-lock"/></svg> PRIVADO</span>
+              <h1 id="privado-title">Lo que sientes<br><em>también importa.</em></h1>
+              <p>Un lugar para nombrar tus emociones sin tener que compartirlas. Tus notas nunca aparecen en el espacio de tu pareja.</p>
+            </div>
+            <span class="page-hero-symbol" aria-hidden="true">♡</span>
+          </div>
+          <div class="privacy-message">
+            <svg><use href="#i-lock"/></svg>
+            <p><strong>Este diario es personal.</strong> En Firebase, las reglas impiden a cualquier otra cuenta, incluida tu pareja, leer tus notas. En demostración, el contenido queda en este navegador y no es seguro para datos sensibles.</p>
+          </div>
+          <div class="two-col">
+            <article class="card form-card">
+              <div class="section-card-heading">
+                <span class="eyebrow">MI MOMENTO CONMIGO</span>
+                <h2>¿Qué hay en tu corazón hoy?</h2>
+              </div>
+              <form id="note-form">
+                <div class="form-field">
+                  <label for="note-content">Escribe con libertad</label>
+                  <textarea id="note-content" required minlength="3" maxlength="3000" rows="7" placeholder="Hoy me sentí… Lo que necesito entender de mí es…"></textarea>
+                  <small class="muted">No necesitas resolverlo todo hoy. Basta con escucharte.</small>
+                </div>
+                <button type="submit" class="button button-primary">Guardar solo para mí <svg><use href="#i-lock"/></svg></button>
+              </form>
+            </article>
+            <article class="card list-card">
+              <div class="section-card-heading">
+                <span class="eyebrow">PÁGINAS QUE ME ACOMPAÑAN</span>
+                <h2>Mi diario</h2>
+              </div>
+              <div id="notes-list" class="entry-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- VISTA LÍMITES -->
+        <section class="view" id="view-limites" aria-labelledby="limites-title" hidden>
+          <div class="page-heading">
+            <span class="eyebrow">APRENDER A CUIDARNOS</span>
+            <h1 id="limites-title">Amar también es<br><em>poner límites.</em></h1>
+            <p>Compartir lo que necesitas abre la puerta a acuerdos más honestos. Un límite expresa una necesidad propia, no controla a la otra persona.</p>
+          </div>
+          <div class="page-insight">
+            <span class="insight-symbol">✳</span> “Puedo cuidar de nuestro vínculo sin renunciar a lo que necesito”.
+          </div>
+          <div class="goals-grid">
+            <article class="card form-card">
+              <div class="section-card-heading">
+                <span class="eyebrow">MI VOZ EN LA RELACIÓN</span>
+                <h2>Mis límites y metas</h2>
+                <p class="muted">Usa frases en primera persona para expresar qué necesitas y qué propones.</p>
+              </div>
+              <form id="goal-form">
+                <div class="form-field">
+                  <label for="goal-type">¿Qué quieres expresar?</label>
+                  <select id="goal-type" required>
+                    <option value="limite">Un límite</option>
+                    <option value="meta">Una meta compartida</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="goal-description">Descríbelo con tus palabras</label>
+                  <textarea id="goal-description" required minlength="5" maxlength="900" rows="4" placeholder="Para sentirme en calma, necesito que conversemos sobre…"></textarea>
+                </div>
+                <div id="dynamic-tip" class="dynamic-tip" role="status" aria-live="polite" hidden>
+                  <div>
+                    <span class="eyebrow">UNA IDEA PARA REFLEXIONAR</span>
+                    <p id="tip-summary"></p>
+                  </div>
+                  <button type="button" id="tip-more" class="text-button">Profundizar</button>
+                </div>
+                <button class="button button-primary" type="submit">Compartir con mi pareja <svg><use href="#i-arrow"/></svg></button>
+                <p id="goal-unlinked" class="muted micro">Para compartir acuerdos reales, primero vincula los perfiles desde Inicio.</p>
+              </form>
+              <div class="entry-divider"></div>
+              <h3 class="small-subtitle">Lo que he compartido</h3>
+              <div id="my-goals" class="entry-list"></div>
+            </article>
+
+            <article class="card partner-goals">
+              <div class="section-card-heading">
+                <span class="eyebrow">LA VOZ DE LA OTRA PERSONA</span>
+                <h2>Límites y metas de mi pareja</h2>
+                <p class="muted">Leer con curiosidad también es una forma de escuchar.</p>
+              </div>
+              <div id="partner-goals" class="entry-list"></div>
+              <div class="partner-reminder">
+                <span>♡</span>
+                <p>No todos los límites tienen que ser iguales. Lo importante es comprenderlos y respetarlos.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- VISTA APRENDIZAJES -->
+        <section class="view" id="view-aprendizajes" aria-labelledby="aprendizajes-title" hidden>
+          <div class="page-heading">
+            <span class="eyebrow">CRECER EN EQUIPO</span>
+            <h1 id="aprendizajes-title">No se trata de no fallar.<br><em>Se trata de aprender.</em></h1>
+            <p>Cuando ambos quieran, registren una situación pasada, el acuerdo alcanzado y qué aprendieron. Esta línea de tiempo es compartida.</p>
+          </div>
+          <div class="two-col timeline-layout">
+            <article class="card form-card">
+              <div class="section-card-heading">
+                <span class="eyebrow">UNA EXPERIENCIA, UNA ENSEÑANZA</span>
+                <h2>Registrar un aprendizaje</h2>
+              </div>
+              <form id="conflict-form">
+                <div class="form-field">
+                  <label for="conflict-date">¿Cuándo sucedió?</label>
+                  <input type="date" id="conflict-date" required>
+                </div>
+                <div class="form-field">
+                  <label for="conflict-problem">¿Qué ocurrió?</label>
+                  <textarea id="conflict-problem" required minlength="8" maxlength="1000" rows="3" placeholder="Tuvimos opiniones diferentes sobre…"></textarea>
+                </div>
+                <div class="form-field">
+                  <label for="conflict-agreement">¿A qué acuerdo llegaron?</label>
+                  <textarea id="conflict-agreement" required minlength="8" maxlength="1000" rows="3" placeholder="Acordamos escuchar sin interrumpir y…"></textarea>
+                </div>
+                <div class="form-field">
+                  <label for="conflict-lesson">¿Qué aprendieron?</label>
+                  <textarea id="conflict-lesson" required minlength="8" maxlength="1000" rows="3" placeholder="Entendimos que nuestras necesidades…"></textarea>
+                </div>
+                <button type="submit" class="button button-primary">Guardar aprendizaje <svg><use href="#i-spark"/></svg></button>
+                <p class="micro muted">Comparte solo aquello sobre lo que ambos estén de acuerdo en dejar constancia.</p>
+              </form>
+            </article>
+            <article class="timeline-column">
+              <div class="section-card-heading">
+                <span class="eyebrow">NUESTRO CAMINO</span>
+                <h2>Lo que hemos aprendido</h2>
+              </div>
+              <div id="timeline-list" class="timeline"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- VISTA BIBLIOTECA -->
+        <section class="view" id="view-biblioteca" aria-labelledby="biblioteca-title" hidden>
+          <div class="page-heading">
+            <span class="eyebrow">IDEAS QUE NOS INVITAN A PENSAR</span>
+            <h1 id="biblioteca-title">Leer también puede ser<br><em>una forma de amar.</em></h1>
+            <p>Una biblioteca breve para cuestionar expectativas, reconocer lo que nos afecta y construir relaciones más conscientes.</p>
+          </div>
+          
+          <div class="library-grid">
+            <article class="library-card library-peach">
+              <span class="library-number">01 / CULTURA DEL INSTANTE</span>
+              <span class="library-symbol" aria-hidden="true">✦</span>
+              <h2>YOLO</h2>
+              <p>“Solo se vive una vez” puede invitarnos a disfrutar, pero también a confundir intensidad con bienestar.</p>
+              <button type="button" class="inline-link library-expand" data-article="yolo" aria-expanded="false" aria-controls="article-yolo">
+                Explorar esta idea <svg><use href="#i-arrow"/></svg>
+              </button>
+              <div id="article-yolo" class="library-article" hidden>
+                <p><strong>Para reflexionar:</strong> vivir el presente no implica ignorar las consecuencias de nuestras decisiones. Puedes pedir espontaneidad y, al mismo tiempo, cuidar tus acuerdos.</p>
+                <p><strong>Conversen:</strong> ¿qué experiencias disfrutamos sin presionarnos a hacer algo que no queremos?</p>
+              </div>
+            </article>
+
+            <article class="library-card library-lilac">
+              <span class="library-number">02 / MIEDO A QUEDARSE FUERA</span>
+              <span class="library-symbol" aria-hidden="true">◌</span>
+              <h2>FOMO</h2>
+              <p>Ver lo que otros comparten puede hacer que comparemos nuestro vínculo con momentos editados de otras relaciones.</p>
+              <button type="button" class="inline-link library-expand" data-article="fomo" aria-expanded="false" aria-controls="article-fomo">
+                Explorar esta idea <svg><use href="#i-arrow"/></svg>
+              </button>
+              <div id="article-fomo" class="library-article" hidden>
+                <p><strong>Para reflexionar:</strong> una relación real también tiene rutinas, silencios y desacuerdos. Compararse constantemente puede ocultar lo que sí funciona.</p>
+                <p><strong>Conversen:</strong> ¿qué esperamos de nuestra relación por deseo propio y qué copiamos de redes sociales?</p>
+              </div>
+            </article>
+
+            <article class="library-card library-green">
+              <span class="library-number">03 / VÍNCULOS EN CAMBIO</span>
+              <span class="library-symbol" aria-hidden="true">≈</span>
+              <h2>Modernidad líquida</h2>
+              <p>Una mirada de Zygmunt Bauman a la fragilidad e incertidumbre de algunos vínculos en la vida contemporánea.</p>
+              <button type="button" class="inline-link library-expand" data-article="liquida" aria-expanded="false" aria-controls="article-liquida">
+                Explorar esta idea <svg><use href="#i-arrow"/></svg>
+              </button>
+              <div id="article-liquida" class="library-article" hidden>
+                <p><strong>Para reflexionar:</strong> la posibilidad de cambiar no elimina la necesidad de cuidado, responsabilidad y conversaciones honestas. No todas las relaciones viven esta fragilidad.</p>
+                <p><strong>Conversen:</strong> ¿cómo construimos seguridad sin confundir compromiso con control?</p>
+              </div>
+            </article>
+
+            <!-- NUEVO TEMA: AMOR MADURO -->
+            <article class="library-card library-peach">
+              <span class="library-number">04 / CONSTRUCCIÓN CONSTANTE</span>
+              <span class="library-symbol" aria-hidden="true">♡</span>
+              <h2>Amor maduro</h2>
+              <p>A diferencia del enamoramiento inicial, el amor maduro es una decisión consciente basada en el conocimiento real del otro, no en la idealización.</p>
+              <button type="button" class="inline-link library-expand" data-article="amor-maduro" aria-expanded="false" aria-controls="article-amor-maduro">
+                Explorar esta idea <svg><use href="#i-arrow"/></svg>
+              </button>
+              <div id="article-amor-maduro" class="library-article" hidden>
+                <p><strong>Para reflexionar:</strong> El amor maduro acepta que la pareja tiene defectos y que la relación requiere trabajo, comunicación y renegociación de acuerdos a lo largo del tiempo.</p>
+                <p><strong>Conversen:</strong> ¿Qué expectativas teníamos al inicio de la relación que han cambiado al conocernos mejor?</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="biblioteca-end">No hay una manera única de amar. Sí hay una pregunta que vale la pena hacerse: <strong>¿nos estamos cuidando?</strong></div>
+        </section>
+      </div>
+
+      <main class="main-footer">
+        <span>A...MARTE — AMAR SIN DAÑAR</span>
+        <span>Tu proceso es tan valioso como tu relación. ♡</span>
+      </main>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="tip-dialog" class="modal">
+    <div class="modal-heading">
+      <span class="eyebrow">CONVERSACIONES CONSCIENTES</span>
+      <button type="button" class="icon-button" id="close-modal" aria-label="Cerrar consejo"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <h2 id="modal-title"></h2>
+    <p id="modal-body"></p>
+    <div class="modal-prompt" id="modal-prompt"></div>
+    <button type="button" class="button button-primary" id="modal-okay">Seguir reflexionando</button>
+  </dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
