@@ -38,6 +38,7 @@ const TIPS = [
     prompt:'Prueba: “Me gustaría que reserváramos ___ para compartir y que respetáramos ___ como tiempo personal”.'
   }
 ];
+
 function localToday() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
@@ -114,6 +115,7 @@ function setWorkspace(next) {
 function renderConnection() {
   const {couple,partner,user}=workspace;
   $('connection-actions').hidden=!!couple;
+  if ($('unlink-container')) $('unlink-container').hidden = !couple;
   $('my-pair-code').textContent=user.codigo_pareja_id||'—';
   if (couple) {
     $('connection-title').textContent=`Conectado con ${partner?.nombre || 'tu pareja'}`;
@@ -259,6 +261,47 @@ function setupEvents() {
       authProcessing = false;
       $('auth-google').disabled = false; 
     }
+  });
+
+  // LÓGICA DE EDITAR PERFIL
+  $('edit-profile-btn')?.addEventListener('click', async () => {
+    if (isDemoActive()) { toast('No se puede cambiar el nombre en modo demostración.', true); return; }
+    const nuevoNombre = window.prompt('Escribe tu nuevo apodo o nombre:', workspace.user.nombre || '');
+    if (!nuevoNombre || nuevoNombre.trim() === '' || nuevoNombre === workspace.user.nombre) return;
+    
+    await runAction($('edit-profile-btn'), async () => {
+      const dbApi = backendStatus().dbApi;
+      const db = backendStatus().db;
+      const userRef = dbApi.doc(db, 'Users', workspace.user.uid);
+      await dbApi.updateDoc(userRef, { nombre: nuevoNombre.trim() });
+      return await fetchWorkspace(); // Recarga el espacio para mostrar el nuevo nombre
+    }, 'Perfil actualizado correctamente.');
+  });
+
+  // LÓGICA DE DESVINCULAR PAREJA
+  $('unlink-btn')?.addEventListener('click', async () => {
+    if (isDemoActive()) { toast('No disponible en modo demostración.', true); return; }
+    if (!window.confirm('¿Estás seguro de que quieres terminar la vinculación? Se borrará la conexión y las fechas, pero los acuerdos y aprendizajes se conservarán ocultos.')) return;
+    
+    await runAction($('unlink-btn'), async () => {
+      const dbApi = backendStatus().dbApi;
+      const db = backendStatus().db;
+      const coupleId = workspace.couple.id_relacion;
+      const myUid = workspace.user.uid;
+      const partnerUid = workspace.partner?.uid;
+      
+      const batch = dbApi.writeBatch(db);
+      // Borrar a ambos usuarios de la relación
+      batch.update(dbApi.doc(db, 'Users', myUid), { id_relacion: null });
+      if (partnerUid) {
+        batch.update(dbApi.doc(db, 'Users', partnerUid), { id_relacion: null });
+      }
+      // Borrar el documento de la relación
+      batch.delete(dbApi.doc(db, 'Couples', coupleId));
+      
+      await batch.commit();
+      return await fetchWorkspace(); // Recarga el espacio para mostrar la desconexión
+    }, 'Te has desvinculado de tu pareja.');
   });
 
   $('demo-start').addEventListener('click',async()=>{

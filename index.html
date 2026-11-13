@@ -137,6 +137,9 @@
           <span id="data-mode" class="data-mode"></span>
           <span id="user-avatar" class="avatar" aria-hidden="true">T</span>
           <span id="topbar-name" class="topbar-name">Tu espacio</span>
+          <button type="button" id="edit-profile-btn" class="icon-button" aria-label="Editar perfil" title="Cambiar mi nombre">
+            <svg><use href="#i-spark"/></svg>
+          </button>
         </div>
       </header>
 
@@ -178,6 +181,7 @@
                 <h3 id="connection-title">Tu historia puede comenzar aquí</h3>
                 <p id="connection-description" class="muted">Conecta tu perfil con el de tu pareja cuando ambos estén listos.</p>
               </div>
+              
               <div class="connection-actions" id="connection-actions">
                 <div class="code-area">
                   <span class="mini-label">TU CÓDIGO DE VINCULACIÓN</span>
@@ -195,6 +199,14 @@
                   <small id="link-help" class="muted">Ambas personas necesitan una cuenta propia.</small>
                 </form>
               </div>
+
+              <!-- CONTENEDOR PARA DESVINCULAR -->
+              <div id="unlink-container" style="margin-top: 1.5rem; text-align: right;" hidden>
+                <button type="button" id="unlink-btn" class="button button-outline button-small" style="border-color: #ffb4a2; color: #d05a46;">
+                  <svg class="inline-icon"><use href="#i-trash"/></svg> Desvincular pareja
+                </button>
+              </div>
+
             </article>
 
             <article class="card time-card">
@@ -445,7 +457,6 @@
               </div>
             </article>
 
-            <!-- NUEVO TEMA: AMOR MADURO -->
             <article class="library-card library-peach">
               <span class="library-number">04 / CONSTRUCCIÓN CONSTANTE</span>
               <span class="library-symbol" aria-hidden="true">♡</span>
