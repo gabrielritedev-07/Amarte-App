@@ -61,7 +61,6 @@
         <p class="muted auth-intro">Un lugar seguro para escucharte y construir vínculos con intención.</p>
         <div id="connection-notice" class="notice info" role="status" hidden></div>
         
-        <!-- BOTÓN DE GOOGLE -->
         <div class="auth-form-container">
           <button id="auth-google" type="button" class="button button-primary button-full" style="background-color: #fff; color: #333; border: 1px solid #ddd;">
             <svg class="inline-icon" viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
@@ -200,13 +199,11 @@
                 </form>
               </div>
 
-              <!-- CONTENEDOR PARA DESVINCULAR -->
               <div id="unlink-container" style="margin-top: 1.5rem; text-align: right;" hidden>
                 <button type="button" id="unlink-btn" class="button button-outline button-small" style="border-color: #ffb4a2; color: #d05a46;">
                   <svg class="inline-icon"><use href="#i-trash"/></svg> Desvincular pareja
                 </button>
               </div>
-
             </article>
 
             <article class="card time-card">
@@ -411,67 +408,145 @@
           <div class="page-heading">
             <span class="eyebrow">IDEAS QUE NOS INVITAN A PENSAR</span>
             <h1 id="biblioteca-title">Leer también puede ser<br><em>una forma de amar.</em></h1>
-            <p>Una biblioteca breve para cuestionar expectativas, reconocer lo que nos afecta y construir relaciones más conscientes.</p>
+            <p>Una biblioteca profunda para cuestionar expectativas, reconocer lo que nos afecta y construir relaciones más conscientes en el mundo de hoy.</p>
           </div>
           
           <div class="library-grid">
+            
+            <!-- TEMA 1: YOLO -->
             <article class="library-card library-peach">
               <span class="library-number">01 / CULTURA DEL INSTANTE</span>
               <span class="library-symbol" aria-hidden="true">✦</span>
               <h2>YOLO</h2>
-              <p>“Solo se vive una vez” puede invitarnos a disfrutar, pero también a confundir intensidad con bienestar.</p>
+              <p>La premisa de "solo se vive una vez" nos empuja a buscar el placer inmediato, pero muchas veces nos lleva a confundir la intensidad con el verdadero bienestar emocional.</p>
               <button type="button" class="inline-link library-expand" data-article="yolo" aria-expanded="false" aria-controls="article-yolo">
                 Explorar esta idea <svg><use href="#i-arrow"/></svg>
               </button>
               <div id="article-yolo" class="library-article" hidden>
-                <p><strong>Para reflexionar:</strong> vivir el presente no implica ignorar las consecuencias de nuestras decisiones. Puedes pedir espontaneidad y, al mismo tiempo, cuidar tus acuerdos.</p>
-                <p><strong>Conversen:</strong> ¿qué experiencias disfrutamos sin presionarnos a hacer algo que no queremos?</p>
+                <p><strong>Para reflexionar:</strong> Si sientes un agotamiento constante por intentar "exprimir" cada segundo con tu pareja, llenando la agenda de planes para sentir que la relación está "viva", es normal. A veces, la presión por coleccionar momentos épicos nos desconecta de la paz de simplemente estar juntos. Vivir el presente no implica huir de las responsabilidades emocionales ni ignorar los límites del otro en nombre de la espontaneidad.</p>
+                <p><strong>Tips prácticos:</strong> 
+                  <br>• Atrévete a decir "no" a planes que te agotan; el aburrimiento compartido también fortalece la intimidad.
+                  <br>• Recuerda que una tarde en silencio en el sofá es tan valiosa como un viaje de fin de semana.
+                </p>
+                <p><strong>Conversen:</strong> ¿Qué experiencias disfrutamos realmente desde la calma, sin sentir la presión de tener que hacer de cada día algo extraordinario?</p>
               </div>
             </article>
 
+            <!-- TEMA 2: FOMO -->
             <article class="library-card library-lilac">
               <span class="library-number">02 / MIEDO A QUEDARSE FUERA</span>
               <span class="library-symbol" aria-hidden="true">◌</span>
               <h2>FOMO</h2>
-              <p>Ver lo que otros comparten puede hacer que comparemos nuestro vínculo con momentos editados de otras relaciones.</p>
+              <p>Ver constantemente lo que otros comparten genera una ansiedad invisible: la sensación de que nuestra relación es insuficiente o "aburrida" comparada con las demás.</p>
               <button type="button" class="inline-link library-expand" data-article="fomo" aria-expanded="false" aria-controls="article-fomo">
                 Explorar esta idea <svg><use href="#i-arrow"/></svg>
               </button>
               <div id="article-fomo" class="library-article" hidden>
-                <p><strong>Para reflexionar:</strong> una relación real también tiene rutinas, silencios y desacuerdos. Compararse constantemente puede ocultar lo que sí funciona.</p>
-                <p><strong>Conversen:</strong> ¿qué esperamos de nuestra relación por deseo propio y qué copiamos de redes sociales?</p>
+                <p><strong>Para reflexionar:</strong> Es muy fácil mirar las redes sociales y sentir que todas las otras parejas viajan más, se regalan más cosas o son más felices. El FOMO (Fear Of Missing Out) nos hace comparar nuestro vínculo real, con sus días malos y sus rutinas, contra los "mejores momentos" editados de los demás. Esta comparación constante es un veneno para la autoestima de la pareja.</p>
+                <p><strong>Tips prácticos:</strong> 
+                  <br>• Establezcan "zonas libres de pantallas" cuando estén juntos (ej. durante la cena).
+                  <br>• Cuando sientas envidia por la relación de alguien más en redes, recuerda que el algoritmo premia el espectáculo, no la autenticidad ni el cuidado diario.
+                </p>
+                <p><strong>Conversen:</strong> ¿Qué expectativas tenemos de nuestra relación porque realmente nos hacen felices a los dos, y cuáles hemos copiado por presión social?</p>
               </div>
             </article>
 
+            <!-- TEMA 3: MODERNIDAD LÍQUIDA -->
             <article class="library-card library-green">
               <span class="library-number">03 / VÍNCULOS EN CAMBIO</span>
               <span class="library-symbol" aria-hidden="true">≈</span>
               <h2>Modernidad líquida</h2>
-              <p>Una mirada de Zygmunt Bauman a la fragilidad e incertidumbre de algunos vínculos en la vida contemporánea.</p>
+              <p>Una mirada de Zygmunt Bauman a la fragilidad contemporánea: relaciones que se mantienen "hasta nuevo aviso" por miedo a perder la libertad individual.</p>
               <button type="button" class="inline-link library-expand" data-article="liquida" aria-expanded="false" aria-controls="article-liquida">
                 Explorar esta idea <svg><use href="#i-arrow"/></svg>
               </button>
               <div id="article-liquida" class="library-article" hidden>
-                <p><strong>Para reflexionar:</strong> la posibilidad de cambiar no elimina la necesidad de cuidado, responsabilidad y conversaciones honestas. No todas las relaciones viven esta fragilidad.</p>
-                <p><strong>Conversen:</strong> ¿cómo construimos seguridad sin confundir compromiso con control?</p>
+                <p><strong>Para reflexionar:</strong> Si alguna vez has sentido que tu pareja (o tú) tiene un "pie en la puerta", listo para huir a la primera señal de dificultad porque siempre "podría haber alguien mejor", estás viviendo el amor líquido. Hoy en día, la sociedad nos empuja a consumir relaciones y desecharlas cuando requieren esfuerzo, generando una profunda sensación de inseguridad y soledad compartida.</p>
+                <p><strong>Tips prácticos:</strong> 
+                  <br>• Entiende que mostrarte vulnerable y pedir compromiso no es debilidad, es valentía.
+                  <br>• Cambien el "veremos qué pasa" por construir acuerdos sólidos a corto y mediano plazo que les den seguridad a ambos.
+                </p>
+                <p><strong>Conversen:</strong> ¿Cómo podemos construir un refugio de seguridad y compromiso mutuo sin confundir la lealtad con el control o la pérdida de autonomía?</p>
               </div>
             </article>
 
+            <!-- TEMA 4: AMOR MADURO -->
             <article class="library-card library-peach">
               <span class="library-number">04 / CONSTRUCCIÓN CONSTANTE</span>
               <span class="library-symbol" aria-hidden="true">♡</span>
               <h2>Amor maduro</h2>
-              <p>A diferencia del enamoramiento inicial, el amor maduro es una decisión consciente basada en el conocimiento real del otro, no en la idealización.</p>
+              <p>A diferencia del enamoramiento impulsivo inicial, el amor maduro es una decisión consciente de cuidado, basada en el conocimiento real del otro, no en su idealización.</p>
               <button type="button" class="inline-link library-expand" data-article="amor-maduro" aria-expanded="false" aria-controls="article-amor-maduro">
                 Explorar esta idea <svg><use href="#i-arrow"/></svg>
               </button>
               <div id="article-amor-maduro" class="library-article" hidden>
-                <p><strong>Para reflexionar:</strong> El amor maduro acepta que la pareja tiene defectos y que la relación requiere trabajo, comunicación y renegociación de acuerdos a lo largo del tiempo.</p>
-                <p><strong>Conversen:</strong> ¿Qué expectativas teníamos al inicio de la relación que han cambiado al conocernos mejor?</p>
+                <p><strong>Para reflexionar:</strong> Las mariposas en el estómago se van y, de repente, ves los defectos de tu pareja con total claridad. Muchas personas creen que aquí se acabó "la chispa" y abandonan la relación. Sin embargo, el amor maduro empieza justo ahí: cuando aceptas que el otro es un ser humano imperfecto y, aún así, eliges quedarte, trabajar en la relación, comunicar lo que duele y renegociar acuerdos.</p>
+                <p><strong>Tips prácticos:</strong> 
+                  <br>• Normaliza las crisis; no son el fin de la relación, son la señal de que un acuerdo antiguo ya no funciona y debe actualizarse.
+                  <br>• Evita usar el "tú siempre" o "tú nunca" en las discusiones; ataquen el problema, no a la persona.
+                </p>
+                <p><strong>Conversen:</strong> ¿Qué expectativas irreales teníamos al inicio de la relación que hoy, al conocernos de verdad, necesitamos soltar para amarnos mejor?</p>
               </div>
             </article>
-          </div>
 
+            <!-- TEMA 5: POSTUREO -->
+            <article class="library-card library-lilac">
+              <span class="library-number">05 / APARIENCIA VS REALIDAD</span>
+              <span class="library-symbol" aria-hidden="true">✧</span>
+              <h2>Postureo</h2>
+              <p>La necesidad desgastante de proyectar una relación perfecta hacia el exterior, dándole más importancia a cómo se ve la pareja que a cómo se siente realmente por dentro.</p>
+              <button type="button" class="inline-link library-expand" data-article="postureo" aria-expanded="false" aria-controls="article-postureo">
+                Explorar esta idea <svg><use href="#i-arrow"/></svg>
+              </button>
+              <div id="article-postureo" class="library-article" hidden>
+                <p><strong>Para reflexionar:</strong> ¿Alguna vez han estado discutiendo en el carro y, al llegar a una reunión o sacarse una foto, fingen la sonrisa más grande del mundo? El "postureo" nos obliga a ser actores de nuestra propia vida. Cuando invertimos más energía en demostrarle a nuestros amigos o seguidores de Instagram que somos felices en lugar de trabajar en los problemas reales de fondo, la relación se vuelve una vitrina vacía que agota emocionalmente.</p>
+                <p><strong>Tips prácticos:</strong> 
+                  <br>• Tengan citas donde esté estrictamente prohibido tomar fotos. Vivan el momento solo para ustedes dos, sin necesidad de dejar evidencia digital.
+                  <br>• Atrévanse a ser honestos con su círculo cercano cuando las cosas no van bien; la vulnerabilidad alivia el peso de aparentar.
+                </p>
+                <p><strong>Conversen:</strong> ¿En qué momentos sentimos que actuamos para los demás en lugar de conectarnos genuinamente entre nosotros?</p>
+              </div>
+            </article>
+
+            <!-- TEMA 6: HOMBRE LIGHT -->
+            <article class="library-card library-green">
+              <span class="library-number">06 / EVASIÓN DEL COMPROMISO</span>
+              <span class="library-symbol" aria-hidden="true">⊘</span>
+              <h2>Hombre light</h2>
+              <p>El concepto de Enrique Rojas sobre el individuo contemporáneo: carente de sustancia, que huye del sufrimiento, evita el compromiso profundo y busca solo la comodidad.</p>
+              <button type="button" class="inline-link library-expand" data-article="hombre-light" aria-expanded="false" aria-controls="article-hombre-light">
+                Explorar esta idea <svg><use href="#i-arrow"/></svg>
+              </button>
+              <div id="article-hombre-light" class="library-article" hidden>
+                <p><strong>Para reflexionar:</strong> Se siente como caminar sobre cáscaras de huevo. Si tu pareja (o tú) cambia de opinión constantemente, evade cualquier conversación incómoda, se escuda en el "no me quiero estresar" y huye ante la mínima señal de frustración o conflicto, se impide la construcción de un vínculo real. El "sujeto light" quiere los beneficios del amor, pero sin pagar el precio del esfuerzo, la renuncia y la empatía profunda.</p>
+                <p><strong>Tips prácticos:</strong> 
+                  <br>• Entiendan que el dolor y la frustración son parte natural del crecimiento en pareja, no señales de que deben huir.
+                  <br>• Fijen conversaciones difíciles sin escapatorias: "Sé que esto es incómodo, pero necesitamos hablarlo para estar mejor".
+                </p>
+                <p><strong>Conversen:</strong> ¿Qué temas difíciles hemos estado evadiendo por miedo a la incomodidad, y cómo podemos enfrentarlos como equipo?</p>
+              </div>
+            </article>
+
+            <!-- TEMA 7: SOCIEDAD DEL CANSANCIO -->
+            <article class="library-card library-peach">
+              <span class="library-number">07 / AUTOEXPLOTACIÓN</span>
+              <span class="library-symbol" aria-hidden="true">◴</span>
+              <h2>Sociedad del cansancio</h2>
+              <p>La tesis de Byung-Chul Han donde nos autoexplotamos bajo la idea de "ser la mejor versión de nosotros mismos", dejándonos sin energía para conectar emocionalmente.</p>
+              <button type="button" class="inline-link library-expand" data-article="cansancio" aria-expanded="false" aria-controls="article-cansancio">
+                Explorar esta idea <svg><use href="#i-arrow"/></svg>
+              </button>
+              <div id="article-cansancio" class="library-article" hidden>
+                <p><strong>Para reflexionar:</strong> Trabajan, estudian, van al gimnasio, escuchan podcasts de productividad, emprenden... y cuando por fin se ven, están tan agotados que apenas pueden sostener una conversación. A veces, la relación misma empieza a sentirse como "otra tarea más" en la lista de pendientes. Esta necesidad tóxica de ser productivos todo el tiempo nos roba el espacio mental y emocional para amar con paciencia y estar presentes.</p>
+                <p><strong>Tips prácticos:</strong> 
+                  <br>• El descanso no es una pérdida de tiempo. Permítanse hacer absolutamente <em>nada</em> juntos sin sentir culpa.
+                  <br>• Protejan su tiempo de pareja de la hiperproductividad: no toda cita tiene que ser una actividad "enriquecedora" o "instagrameable".
+                </p>
+                <p><strong>Conversen:</strong> ¿Cómo podemos dejar de tratarnos como un proyecto a optimizar y empezar a ser un refugio donde podamos descansar el uno en el otro?</p>
+              </div>
+            </article>
+
+          </div>
           <div class="biblioteca-end">No hay una manera única de amar. Sí hay una pregunta que vale la pena hacerse: <strong>¿nos estamos cuidando?</strong></div>
         </section>
       </div>
